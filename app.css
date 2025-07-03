@@ -1,0 +1,109 @@
+body {
+    background-color: hsl(0, 0%, 5%);
+    margin: 0;
+}
+
+.my-element {
+    position: absolute;
+    width: 1741.39px;
+    height: 797.83px;
+    left: 89.32px;
+    top: 75.21px;
+    background: url('HugeHeader.png') no-repeat center/cover;
+    opacity: 0.8;
+}
+
+.text-1 {
+    position: absolute;
+    width: 937px;
+    height: 242px;
+    left: 145px;
+    top: 75px;
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.1691em;
+    line-height: 242px;
+    color: black;
+    font-size: 200px;
+}
+
+.nav-box {
+    position: absolute;
+    width: 717px;
+    height: 91px;
+    left: 1120px;
+    top: 60px;
+
+    background-color: rgba(166, 166, 166, 0.24);
+    border-radius: 34px;
+    opacity: 0.21;
+
+    border-left: 2px solid #ffffff;
+}
+
+.text-our {
+    position: absolute;
+    width: 451px;
+    height: 58px;
+    left: 734px;
+    top: 428px;
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 58px;
+    letter-spacing: 3.62em;
+
+    background: linear-gradient(90deg, #000000 0%, #FFFFFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+}
+
+.text-design {
+    position: absolute;
+    width: 955px;
+    height: 181px;
+    left: 854px;
+    top: 638px;
+
+    font-family: 'Notable';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 185px;
+    line-height: 240px;
+    letter-spacing: 0.12em;
+
+    color: #FFFFFF;
+}
+
+.sol-pill {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 164.02px;
+    height: 413.44px;
+    left: 1548px;
+    top: 182px;
+
+    background: rgba(38, 38, 38, 0.22);
+    opacity: 0.76;
+    backdrop-filter: blur(4.2px);
+    border-left: 1px solid #ffffff71;
+    border-radius: 100px;
+    transform: rotate(-30.26deg);
+}
+
+.Sol-pill-img {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: 1486px;
+    top: 242px;
+    opacity: 5%;
+    background: url('SolnetexLogoWhite.png') no-repeat center;
+    background-size: contain;
+}
