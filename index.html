@@ -6,7 +6,8 @@
     <title>React Figma Example — Scroll Animation with Blur</title>
 
     <!-- Fonts & Font Awesome -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,12 +18,13 @@
     <style>
         html,
         body {
-            height: 100%;
+            height: 3000px;
             margin: 0;
-            overflow: hidden;
+            overflow: auto;
             background-color: hsl(0, 0%, 5%);
             font-family: 'Inter', sans-serif;
         }
+        
 
         /* Container for all content except big box */
         .content-wrapper {
@@ -134,376 +136,899 @@
             background: url('SolnetexLogoWhite.png') no-repeat center;
             background-size: contain;
         }
+.text-home {
+  position: absolute;
+  width: 103px;
+  height: 39px;
+  left: 1147px;
+  top: 86px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 300; /* Light */
+  font-size: 32px;
+  letter-spacing: 0.15em;
+  line-height: 39px;
+  background-color: transparent; /* clean transparent background */
+  color: #ffffff;
+  
+  outline: none;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
 
-        .card {
+  position: absolute;
+  display: inline-block;
+  overflow: visible;
+}
+
+/* Remove focus outlines and shadows */
+.text-home:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Lines on top and bottom */
+.text-home::before,
+.text-home::after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  background-color: #ffffff;
+  width: 0;
+  left: 0;
+  transition: width 0.3s ease;
+  border-radius: 1px;
+}
+
+.text-home::before {
+  top: 0;
+}
+
+.text-home::after {
+  bottom: 1;
+}
+
+/* Hover effect: lines expand full width */
+.text-home:hover::before,
+.text-home:hover::after {
+  width: 155%;
+}
+
+/* Slight color/weight change on hover */
+.text-home:hover {
+  color: #ffffffcc;
+  ;
+}
+
+        
+        .nav-split-1 {
             position: absolute;
-            background: rgba(53, 53, 53, 0.13);
-            border-radius: 20px;
-            border: 2px solid #ffffff2f;
-            color: white;
-            padding: 20px 30px;
-            box-sizing: border-box;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            overflow-y: auto;
-            width: 1833px;
-            height: 846px;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            scrollbar-width: thin;
-            scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
-            z-index: 10;
-            /* Ensure card is above other elements */
-        }
+            width: 1px;
+            height: 83px;
+            left: 1330px;
+            top: 64px;
+            background: #FFFFFF;
+}
 
-        .card.visible {
-            opacity: 1;
-        }
+.text-discover {
+  position: absolute;
+  width: 164px;
+  height: 39px;
+  left: 1374px;
+  top: 86px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 300; /* Light */
+  font-size: 32px;
+  letter-spacing: 0.15em;
+  line-height: 39px;
+  background-color: transparent;
+  color: #ffffff;
 
-        .card-header {
-            font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
+  outline: none;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+  display: inline-block;
+  overflow: visible;
+}
 
-        .card-header.visible {
-            opacity: 1;
-        }
+.text-discover:focus {
+  outline: none;
+  box-shadow: none;
+}
 
-        .card-body {
-            font-size: 18px;
-            line-height: 1.4;
-            opacity: 0;
-            transition: opacity 0.5s ease 0.3s;
-        }
+.text-discover::before,
+.text-discover::after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  background-color: #ffffff;
+  width: 0;
+  left: 0;
+  transition: width 0.3s ease;
+  border-radius: 1px;
+}
 
-        .card-body.visible {
-            opacity: 1;
-        }
+.text-discover::before {
+  top: 0;
+}
 
-        /* Custom scrollbar for WebKit browsers */
-        .card::-webkit-scrollbar {
-            width: 8px;
-        }
+.text-discover::after {
+  bottom: 1.5px;
+}
 
-        .card::-webkit-scrollbar-track {
-            background: transparent;
-        }
+.text-discover:hover::before,
+.text-discover:hover::after {
+  width: 99%;
+}
 
-        .card::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 4px;
-        }
+.text-discover:hover {
+  color: #ffffffcc;
+  
+}
 
-        .card::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.5);
-        }
+.nav-split-2 {
+  position: absolute;
+  width: 1px;
+  height: 83px;
+  left: 1574px;
+  top: 64px;
+  background: #FFFFFF;
+}
 
-        .card {
-            overflow-y: auto;
-            padding: 20px 30px;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            font-family: 'Inter', sans-serif;
-            background: rgba(53, 53, 53, 0.13);
-            border-radius: 20px;
-            border: 2px solid #ffffff2f;
-            box-sizing: border-box;
-        }
+.text-students {
+  position: absolute;
+  width: 168px;
+  height: 39px;
+  left: 1619px;
+  top: 86px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 32px;
+  letter-spacing: 0.15em;
+  line-height: 39px;
+  background-color: transparent;
+  color: #ffffff;
 
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
+  outline: none;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+  display: inline-block;
+  overflow: visible;
+}
 
-        .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-        }
+.text-students:focus {
+  outline: none;
+  box-shadow: none;
+}
 
-        .nav {
-            display: flex;
-            gap: 20px;
-        }
+.text-students::before,
+.text-students::after {
+  content: '';
+  position: absolute;
+  height: 2px;
+  background-color: #ffffff;
+  width: 0;
+  left: 0;
+  transition: width 0.3s ease;
+  border-radius: 1px;
+}
 
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
+.text-students::before {
+  top: 0;
+}
 
-        .nav-link:hover {
-            color: #ddd;
-        }
+.text-students::after {
+  bottom: 1px;
+}
 
-        .hero-section {
-            display: flex;
-            gap: 30px;
-            margin-bottom: 30px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
+.text-students:hover::before,
+.text-students:hover::after {
+  width: 100%;
+}
 
-        .hero-text {
-            flex: 1 1 300px;
-        }
+.text-students:hover {
+  color: #ffffffcc;
+  
+}
 
-        .hero-text h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-        }
 
-        .hero-text p {
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-        }
+.about-pic {
+  position: absolute;
+  width: 673px;
+  height: 673px;
+  left: 128px;
+  top: 797px;
+  background: url('SolnetexLogoWhite.png') no-repeat center/cover;
+  opacity: 0.03;
+  backdrop-filter: blur(17.9px);
+  border-radius: 34px;
+}
 
-        .cta-button {
-            padding: 12px 25px;
-            background-color: #444;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+.text-about-us {
+  position: absolute;
+  width: 154px;
+  height: 36px;
+  left: 883px;
+  top: 941px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 200;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+}
 
-        .cta-button:hover {
-            background-color: #666;
-        }
+.about-why-us {
+  box-sizing: border-box;
+  position: absolute;
+  width: 982px;
+  height: 570px;
+  left: 836px;
+  top: 902px;
+  border-radius: 69px;
+  border-top: 1px solid #ffffff15;
+  border-bottom: 1px solid #00000048;
+  /* Add background or other styles if needed */
+}
 
-        .hero-image {
-            flex: 1 1 300px;
-            text-align: center;
-        }
+.separator1 {
+  position: absolute;
+  width: 722px;
+  height: 1px;
+  left: 874px;
+  top: 995px;
+  background: linear-gradient(90deg, #D9D9D9 0%, rgba(0, 0, 0, 0) 100%);
+}
+.solnetex-description {
+  position: absolute;
+  width: 792px;
+  height: 240px;
+  left: 874px;
+  top: 1024px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 24px;
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+  white-space: normal; /* allow wrapping */
+}
 
-        .hero-image img {
-            max-width: 100%;
-            border-radius: 12px;
-        }
+.text-why-us {
+  position: absolute;
+  width: 143px;
+  height: 36px;
+  left: 883px;
+  top: 1172px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 200;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+}
 
-        .content-section {
-            margin-bottom: 30px;
-        }
+.separator2 {
+  position: absolute;
+  width: 722px;
+  height: 1px;
+  left: 874px;
+  top: 1226px;
+  background: linear-gradient(90deg, #D9D9D9 0%, rgba(0, 0, 0, 0) 100%);
+}
 
-        .content-section h2 {
-            margin-bottom: 20px;
-            font-weight: 700;
-            font-size: 2rem;
-        }
+.other-companies {
+  position: absolute;
+  width: 311px;
+  height: 240px;
+  left: 874px;
+  top: 1245px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 36px; /* increase line height for spacing */
+  letter-spacing: 0.19em;
+  color: #FFFFFF;
+}
 
-        .services-grid {
-            display: flex;
-            gap: 25px;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
+.other-companies p {
+  margin: 0;
+  padding-left: 0;
+  list-style: none; /* just in case */
+}
+.solnetex-benefits {
+  position: absolute;
+  width: 435px;
+  height: 240px;
+  left: 1211px;
+  top: 1245px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 36px; /* spaced lines */
+  letter-spacing: 0.19em;
+  color: #FFFFFF;
+}
 
-        .service-item {
-            flex: 1 1 30%;
-            background: rgba(255 255 255 / 0.1);
-            padding: 15px;
-            border-radius: 12px;
-            text-align: center;
-            box-sizing: border-box;
-        }
+.solnetex-benefits p {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
 
-        .service-item img {
-            width: 80px;
-            margin-bottom: 15px;
-            border-radius: 10px;
-        }
+.quote-pic {
+  box-sizing: border-box;
+  position: absolute;
+  width: 673px;
+  height: 673px;
+  left: 128px;
+  top: 1748px;
+  background: #161616;
+  backdrop-filter: blur(17.9px);
+  /* Note: backdrop-filter has minimal browser support */
+  border-radius: 34px;
+  border: 1px solid #ffffff52;
+}
+.quote-line1 {
+  position: absolute;
+  width: 547px;
+  height: 1px;
+  left: 191px;
+  top: 1863px;
+  background: linear-gradient(90deg, #161616 0%, #FFFFFF 50%, #161616 100%);
+}
 
-        .service-item h3 {
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
+.text-88-percent {
+  position: absolute;
+  width: 211px;
+  height: 116px;
+  left: 904px;
+  top: 1788px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 96px;
+  line-height: 116px;
+  letter-spacing: 0.03em;
+  color: #FFFFFF;
+  z-index: 10;
+}
 
-        .service-item p {
-            font-size: 0.95rem;
-            line-height: 1.3;
-        }
+.quote-mark {
+  position: absolute;
+  width: 92px;
+  height: 290px;
+  left: 142px;
+  top: 1836px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 240px;
+  line-height: 290px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: #FFFFFF;
+}
 
-        .long-text-section {
-            font-size: 0.95rem;
-            line-height: 1.5;
-            max-height: 150px;
-            overflow-y: auto;
-            padding-right: 10px;
-            margin-bottom: 30px;
-            border-top: 1px solid rgba(255 255 255 / 0.2);
-            border-bottom: 1px solid rgba(255 255 255 / 0.2);
-        }
+.my-friends-text {
+  position: absolute;
+  width: 554px;
+  height: 174px;
+  left: 188px;
+  top: 1981px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 200;
+  font-size: 48px;
+  line-height: 58px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: #FFFFFF;
+}
+.quote-mark-close {
+  position: absolute;
+  width: 92px;
+  height: 290px;
+  left: 612px;
+  top: 2098px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 400;
+  font-size: 240px;
+  line-height: 290px;
+  text-align: center;
+  letter-spacing: 0.03em;
+  color: #FFFFFF;
+}
 
-        .card-footer {
-            text-align: center;
-            font-size: 0.85rem;
-            color: #aaa;
-            border-top: 1px solid rgba(255 255 255 / 0.2);
-            padding-top: 15px;
-        }
+.quote-line2 {
+  position: absolute;
+  width: 547px;
+  height: 1px;
+  left: 191px;
+  top: 2259px;
+  background: linear-gradient(90deg, #161616 0%, #FFFFFF 50%, #161616 100%);
+}
+
+.quote-until-solnetex {
+  position: absolute;
+  width: 420px;
+  height: 44px;
+  left: 255px;
+  top: 2295px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 200;
+  font-size: 36px;
+  line-height: 44px; /* identical to box height */
+  letter-spacing: 0.03em;
+  color: #FFFFFF;
+}
+.percrect {
+  box-sizing: border-box;
+  position: absolute;
+  width: 966px;
+  height: 336px;
+  left: 852px;
+  top: 1749px;
+  background: url('Screenshot 2025-07-03 235025.png') no-repeat center/cover;
+  opacity: 0.6;
+  border-radius: 34px;
+  border-left: #fff;
+}
+
+.less-likely-text {
+  position: absolute;
+  width: 762px;
+  height: 80px;
+  left: 904px;
+  top: 1957px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 39px;
+  letter-spacing: 0.03em;
+  color: #FFFFFF;
+}
+.retain-rect {
+  box-sizing: border-box;
+  position: absolute;
+  width: 966px;
+  height: 290px;
+  left: 852px;
+  top: 2131px;
+  background: url('Screenshot 2025-07-03 234954.png') no-repeat center/cover;
+  opacity: 0.6;
+  border-radius: 34px;
+}
+.text-clean {
+  position: absolute;
+  width: 279px;
+  height: 116px;
+  left: 904px;
+  top: 2155px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 96px;
+  line-height: 116px;
+  letter-spacing: 0.03em;
+  color: #FFFFFF;
+}
+.text-retention {
+  position: absolute;
+  width: 762px;
+  height: 80px;
+  left: 904px;
+  top: 2295px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 39px;
+  letter-spacing: 0.03em;
+  color: #FFFFFF;
+}
+.additional-blogs {
+  position: absolute;
+  width: 276px;
+  height: 36px;
+  left: 20px;
+  top: 2682px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 200;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+}
+.footer-separation {
+  position: absolute;
+  width: 722px;
+  height: 1px;
+  left: 20px;
+  top: 2736px;
+  background: linear-gradient(90deg, #D9D9D9 0%, rgba(0, 0, 0, 0) 100%);
+}
+
+.tips-tricks {
+  position: absolute;
+  width: 403px;
+  height: 29px;
+  left: 20px;
+  top: 2755px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 200;
+  font-size: 24px;
+  line-height: 29px; /* identical to box height */
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+}
+.ways-low-budgets {
+  position: absolute;
+  width: 510px;
+  height: 29px;
+  left: 20px;
+  top: 2802px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 200;
+  font-size: 24px;
+  line-height: 29px; /* identical to box height */
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+}
+.top5-design-trends {
+  position: absolute;
+  width: 361px;
+  height: 29px;
+  left: 20px;
+  top: 2849px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 200;
+  font-size: 24px;
+  line-height: 29px; /* identical to box height */
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+}
+.more-from-us {
+  position: absolute;
+  width: 223px;
+  height: 36px;
+  left: 1682px;
+  top: 2675px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 200;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+}
+.footer-sepa-2 {
+  position: absolute;
+  width: 722px;
+  height: 1px;
+  left: 1183px;
+  top: 2730px;
+  background: linear-gradient(90deg, #0D0D0D 0%, #FFFFFF 100%);
+}
+.discord {
+  position: absolute;
+  width: 102px;
+  height: 29px;
+  left: 1803px;
+  top: 2755px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 200;
+  font-size: 24px;
+  line-height: 29px; /* identical to box height */
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+}
+.instagram {
+  position: absolute;
+  width: 133px;
+  height: 29px;
+  left: 1769px;
+  top: 2802px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 200;
+  font-size: 24px;
+  line-height: 29px; /* identical to box height */
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+}
+.x-twitter {
+  position: absolute;
+  width: 272px;
+  height: 29px;
+  left: 1633px;
+  top: 2849px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 200;
+  font-size: 24px;
+  line-height: 29px; /* identical to box height */
+  letter-spacing: 0.12em;
+  color: #FFFFFF;
+}
+.copyright-text {
+  position: absolute;
+  width: 586px;
+  height: 39px;
+  left: 743px;
+  top: 2952px;
+  font-family: 'Inter', sans-serif;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 32px;
+  line-height: 39px; /* identical to box height */
+  letter-spacing: 0.03em;
+  color: #FFFFFF;
+}
+
+ /* Blur overlay behind card */
+    .blur-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backdrop-filter: blur(8px);
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 999;
+    }
+
+    .big-card {
+      box-sizing: border-box;
+      position: fixed;
+      width: 1701px;
+      height: 804px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) translateY(1500px) rotate(45deg);
+      background: rgba(207, 207, 207, 0.14);
+      border: 1px solid #5C5C5C;
+      border-radius: 134px;
+      color: #fff;
+      padding: 50px;
+      z-index: 1000;
+      will-change: opacity, transform;
+
+
+      opacity: 0;
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .big-card.open {
+      opacity: 1;
+      transform: translate(-50%, -50%) translateY(0) rotate(0);
+    }
+
+    .big-card button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background: #fff;
+      color: #000;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+
+/* Add this if not already there */
+.content-wrapper.blur {
+  filter: blur(8px);
+  pointer-events: none;
+  transition: filter 0.5s ease;
+}
+
+
+
+
     </style>
 </head>
 
 <body>
-    <div id="root"></div>
+  <div id="root"></div>
 
-    <!-- React & ReactDOM -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <!-- React & ReactDOM -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
 
-    <!-- Babel -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <!-- Babel -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <script type="text/babel">
-        const { useState, useEffect, useRef } = React;
+  <script type="text/babel">
+    const { useState } = React;
 
-        // Linear interpolate helper
-        function lerp(start, end, t) {
-            return start + (end - start) * t;
-        }
+    function App() {
+      const [isCardOpen, setIsCardOpen] = useState(false);
 
-        function App() {
-            const [progress, setProgress] = useState(0);
-            const cardRef = useRef(null);
+      return (
+        <>
+         <div className={`content-wrapper ${isCardOpen ? 'blur' : ''}`}>
 
-            useEffect(() => {
-                const handleWheel = (e) => {
-                    const isBlurred = progress > 100;
-                    const isOverCard = cardRef.current && cardRef.current.contains(e.target);
+            <div className="my-element"></div>
+            <div className="text-1">THIS IS</div>
+            <div className="nav-box"></div>
+            <div className="text-our">OUR</div>
+            <div className="text-design">DESIGN</div>
+            <div className="sol-pill"></div>
 
-                    if (isBlurred && isOverCard) {
-                        // Allow default scrolling behavior when over the card and blurred
-                        return;
-                    }
+            <button className="text-home" onClick={() => setIsCardOpen(true)}>
+              Services
+            </button>
 
-                    e.preventDefault();
-                    setProgress((prev) => {
-                        let next = prev + e.deltaY * 0.5;
-                        return Math.max(0, Math.min(next, 800));
-                    });
-                };
+            <div className="Sol-pill-img"></div>
+            <div className="nav-split-1"></div>
+            <div className="text-discover">Discover</div>
+            <div className="nav-split-2"></div>
+            <div className="text-students">Students</div>
+            <div className="about-pic"></div>
+            <div className="text-about-us">About Us</div>
+            <div className="about-why-us"></div>
+            <div className="separator1"></div>
+            <div className="solnetex-description">
+              At Solnetex, we don’t just build stunning websites — we build opportunities. We connect talented designers and developers, giving them a platform to collaborate, create, and earn together. By combining high-quality design with seamless partnerships, we help businesses grow and empower creatives to thrive.
+            </div>
+            <div className="text-why-us">Why Us?</div>
+            <div className="separator2"></div>
+            <div className="other-companies">
+              <p>Other Companies</p>
+              <p>✖ Slow communication</p>
+              <p>✖ Hidden processes</p>
+              <p>✖ Inconsistent results</p>
+              <p>✖ Limited expertise</p>
+              <p>✖ Outsourced talent</p>
+            </div>
+            <div className="solnetex-benefits">
+              <p>Solnetex</p>
+              <p>✔ Fast, proactive communication</p>
+              <p>✔ Full transparency</p>
+              <p>✔ Reliable, proven results</p>
+              <p>✔ Expert-level strategies</p>
+              <p>✔ Lots of experience</p>
+            </div>
+            <div className="quote-pic"></div>
+            <div className="quote-line1"></div>
+            <div className="text-88-percent">88%</div>
+            <div className="quote-mark">“</div>
+            <div className="my-friends-text">
+              My own friends could not understand my web page.
+            </div>
+            <div className="quote-mark-close">”</div>
+            <div className="quote-line2"></div>
+            <div className="quote-until-solnetex">“Until Solnetex came in”</div>
+            <div className="percrect"></div>
+            <div className="less-likely-text">
+              of online consumers are less likely to return to a site after a bad user experience.
+            </div>
+            <div className="retain-rect"></div>
+            <div className="text-clean">Clean</div>
+            <div className="text-retention">
+              layouts can retain consumer retention more than you can imagine.
+            </div>
+            <div className="additional-blogs">Additional blogs</div>
+            <div className="footer-separation"></div>
+            <div className="tips-tricks">Tips and Tricks to elevate UX</div>
+            <div className="ways-low-budgets">Ways to get around with low budgets</div>
+            <div className="top5-design-trends">Top 5 design trends, 2025</div>
+            <div className="more-from-us">More from us</div>
+            <div className="footer-sepa-2"></div>
+            <a href="https://discord.gg/7E7g2Q9b5G" target="_blank" rel="noopener noreferrer" className="discord">Discord</a>
+            <a href="https://www.instagram.com/solnetex/" target="_blank" rel="noopener noreferrer" className="instagram">Instagram</a>
+            <a href="https://twitter.com/solnetex" target="_blank" rel="noopener noreferrer" className="x-twitter">X (Formerly Twitter)</a>
 
-                window.addEventListener('wheel', handleWheel, { passive: false });
-                return () => window.removeEventListener('wheel', handleWheel);
-            }, [progress]);
+            <div className="copyright-text">© 2025 Solnetex. All rights reserved.</div>
+          </div>
 
-            const t = progress / 800;
+          <>
+  {/* Blur overlay only shows when open */}
+  {isCardOpen && <div className="blur-overlay" onClick={() => setIsCardOpen(false)}></div>}
 
-            // Start small near bottom center (200x200), move up and grow full viewport (width/height ~ 90vw/90vh)
-            const vw = window.innerWidth || 800;
-            const vh = window.innerHeight || 600;
+   {/* Always render the big-card */}
+<div className={`big-card ${isCardOpen ? 'open' : ''}`}>
+  <div
+    style={{
+      position: 'absolute',
+      width: '476px',
+      height: '287px',
+      left: '128px',
+      top: '109px',
+      background: 'url(Frame2.png)',
+      borderRadius: '79px',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+    }}
+  ></div>
 
-            const boxWidth = lerp(200, vw * 0.9, t);
-            const boxHeight = lerp(200, vh * 0.9, t);
+  <div
+    style={{
+      position: 'absolute',
+      width: '293px',
+      height: '36px',
+      left: '749px',
+      top: '159px',
+      fontFamily: 'Inter',
+      fontStyle: 'italic',
+      fontWeight: 200,
+      fontSize: '30px',
+      lineHeight: '36px',
+      letterSpacing: '0.12em',
+      color: '#FFFFFF',
+    }}
+  >
+    Stunning designs
+  </div>
 
-            // Start vertical near bottom: top = vh - small box height - 40px margin
-            // End vertical centered: (vh - big box height)/2
-            const startTop = vh - 200 - 40;
-            const endTop = (vh - boxHeight) / 2;
-            const boxTop = lerp(startTop, endTop, t);
+  <div
+    style={{
+      position: 'absolute',
+      width: '722px',
+      height: '1px',
+      left: '749px',
+      top: '206px',
+      background: 'linear-gradient(90deg, #D9D9D9 0%, rgba(0, 0, 0, 0) 100%)',
+    }}
+  ></div>
 
-            const isBlurred = progress > 100;
+  <div
+    style={{
+      position: 'absolute',
+      width: '662px',
+      height: '96px',
+      left: '749px',
+      top: '219px',
+      fontFamily: 'Inter',
+      fontStyle: 'italic',
+      fontWeight: 200,
+      fontSize: '20px',
+      lineHeight: '24px',
+      letterSpacing: '0.12em',
+      color: '#FFFFFF',
+    }}
+  >
+    At Solnetex, we’re all about creating the most beautiful websites, and in addition to that, we even offer a bundle that allows you to get up to 5 videos and 10 posters done for you, all at a low cost. With unlimited revisions.
+  </div>
+</div>
 
-            return (
-                <>
-                    <div className={`content-wrapper ${isBlurred ? 'blur' : ''}`}>
-                        <div className="my-element"></div>
-                        <div className="text-1">THIS IS</div>
-                        <div className="nav-box"></div>
-                        <div className="text-our">OUR</div>
-                        <div className="text-design">DESIGN</div>
-                        <div className="sol-pill"></div>
-                        <div className="Sol-pill-img"></div>
-                    </div>
 
-                    <div
-                        className="big-box"
-                        style={{
-                            width: `${boxWidth}px`,
-                            height: `${boxHeight}px`,
-                            top: `${boxTop}px`,
-                        }}
-                    />
+ 
 
-                    <div className={`card ${isBlurred ? 'visible' : ''}`} ref={cardRef}>
 
-                        <header className="card-header">
-                            <div className="logo">LOGO</div>
-                            <nav className="nav">
-                                <a href="#home" className="nav-link">Home</a>
-                                <a href="#about" className="nav-link">About</a>
-                                <a href="#services" className="nav-link">Services</a>
-                                <a href="#contact" className="nav-link">Contact</a>
-                            </nav>
-                        </header>
+</>
 
-                        <section className="hero-section">
-                            <div className="hero-text">
-                                <h1>Welcome to Our Design</h1>
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                </p>
-                                <button className="cta-button">Get Started</button>
-                            </div>
-                            <div className="hero-image">
-                                {/* Placeholder for an image */}
-                                <img src="https://via.placeholder.com/400x250" alt="Hero Visual" />
-                            </div>
-                        </section>
+        </>
+      );
+    }
 
-                        <section className="content-section">
-                            <h2>Our Services</h2>
-                            <div className="services-grid">
-                                <div className="service-item">
-                                    <img src="https://via.placeholder.com/100" alt="Service 1" />
-                                    <h3>Design</h3>
-                                    <p>Creative and modern designs tailored to your needs.</p>
-                                </div>
-                                <div className="service-item">
-                                    <img src="https://via.placeholder.com/100" alt="Service 2" />
-                                    <h3>Development</h3>
-                                    <p>Robust and scalable websites and apps built to perform.</p>
-                                </div>
-                                <div className="service-item">
-                                    <img src="https://via.placeholder.com/100" alt="Service 3" />
-                                    <h3>Marketing</h3>
-                                    <p>Effective digital marketing to grow your brand.</p>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section className="long-text-section">
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua...
-                            </p>
-                            <p>
-                                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur...
-                            </p>
-                            {/* Add as many paragraphs as you want here */}
-                        </section>
-
-                        <footer className="card-footer">
-                            <p>© 2025 Your Company Name. All rights reserved.</p>
-                        </footer>
-                    </div>
-
-                </>
-            );
-        }
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
+    const root = ReactDOM.createRoot(document.getElementById('root'));
+    root.render(<App />);
+  </script>
 </body>
+
 
 </html>

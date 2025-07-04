@@ -107,3 +107,18 @@ body {
     background: url('SolnetexLogoWhite.png') no-repeat center;
     background-size: contain;
 }
+
+.text-home {
+  position: absolute;
+  width: 103px;
+  height: 39px;
+  left: 1181px;
+  top: 86px;
+  font-family: 'Inter', sans-serif;
+  font-style: normal;
+  font-weight: 300; /* Light */
+  font-size: 32px; /* Approx for 39px height line */
+  letter-spacing: 0.15em;
+  line-height: 39px;
+  color: white;
+}
