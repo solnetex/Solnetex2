@@ -1,0 +1,229 @@
+<head>
+    <meta charset="UTF-8" />
+    <title>FAQ - Your Company Name</title>  <!-- Add this line -->
+    <!-- Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+
+<!-- FAQ Section -->
+    <section id="faq" class="faq">
+        <h2>FAQ</h2>
+        <div class="faq-container">
+            <!-- FAQ Item 1 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    What services do you offer?
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>We are mainly a website development company but we also provide other services such as video
+                        editing and marketing.</p>
+                </div>
+            </div>
+            <!-- FAQ Item 2 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    Can I trust you?
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Our team consists of experienced professionals in web development, digital marketing, video
+                        production, graphic design and more and also worked with multiple other clients. We also always
+                        have a dedicated team for each client so you know whats going on inside and out!</p>
+                </div>
+            </div>
+            <!-- FAQ Item 3 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    How much do you charge?
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Our pricing varies based on the services required. Please contact us for a detailed quote.</p>
+                </div>
+            </div>
+            <!-- FAQ Item 4 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    Can I get a refund for services?
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>We do not provide refunds; however, we offer unlimited revisions to ensure your complete
+                        satisfaction.</p>
+                </div>
+            </div>
+            <!-- FAQ Item 5 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    How do I contact customer support?
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>You can reach our customer support team via email or by filling out the contact form on our
+                        website.</p>
+                </div>
+            </div>
+            <!-- FAQ Item 6 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    Do I have to pay for the services listed individually?
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>No, all of the services listed such as video editing and logo design are there to further help
+                        boost marketing for your business.</p>
+                </div>
+            </div>
+            <!-- FAQ Item 7 -->
+            <div class="faq-item">
+                <button class="faq-question">
+                    Do you offer custom plans?
+                    <span class="icon">+</span>
+                </button>
+                <div class="faq-answer">
+                    <p>Yes, we offer custom plans tailored to your needs. Please get in touch to discuss the best
+                        options for your business.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- CSS -->
+    <style>
+        body {
+    height: 100vh; /* Use full viewport height */
+    margin: 0;
+    color: #fff;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-color: hsl(0, 0%, 5%);
+    font-family: 'Inter', sans-serif;
+    overflow: auto;
+}
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            margin-top: 50px;
+            font-family: 'Quicksand';
+        }
+
+        .faq-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 10px;
+            border: 2px solid #333;
+            border-radius: 20px;
+            background-color: #000000;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .faq-question {
+            background: transparent;
+            color: #fff;
+            font-size: 1rem;
+            padding: 4px 13px;
+            font-family: 'Quicksand';
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .icon {
+            font-size: 1.2rem;
+            transition: transform 0.3s ease;
+        }
+
+
+        .faq-item.active .icon {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            height: 1;
+            opacity: 0;
+            padding: 0 20px;
+            overflow: hidden;
+            letter-spacing: 0.05em;
+            transition:
+                height 0.3s ease-out,
+                opacity 0.3s ease-out,
+                padding 0.3s ease-out;
+
+
+        }
+
+
+        .faq-answer {
+            height: 0;
+            overflow: hidden;
+            opacity: 0;
+            padding-left: 8px;
+            padding-right: 8px;
+            transition: height 0.5s ease, opacity 0.3s ease, padding 0.3s ease;
+            box-sizing: border-box;/
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            opacity: 1;
+            padding: 15px 20px;
+        }
+    </style>
+    <!-- JavaScript -->
+     <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const faqItems = document.querySelectorAll(".faq-item");
+
+            faqItems.forEach((item) => {
+                const question = item.querySelector(".faq-question");
+                const answer = item.querySelector(".faq-answer");
+
+                question.addEventListener("click", () => {
+                    const isActive = item.classList.contains("active");
+
+
+                    faqItems.forEach((otherItem) => {
+                        otherItem.classList.remove("active");
+                        const otherAnswer = otherItem.querySelector(".faq-answer");
+                        otherAnswer.style.height = '0px';
+                        otherAnswer.style.opacity = 0;
+                    });
+
+                    if (!isActive) {
+
+                        item.classList.add("active");
+
+
+                        answer.style.height = `${answer.scrollHeight + 20}px`;
+                        answer.style.opacity = 1;
+                    } else {
+                        // Close the clicked FAQ item
+                        answer.style.height = '0px';
+                        answer.style.opacity = 0;
+                    }
+                });
+            });
+        });
+
+
+
+
+
+
+    </script>

@@ -836,6 +836,9 @@
       border-radius: 8px;
       cursor: pointer;
     }
+    a {
+  text-decoration: none;
+}
 
 
 /* Add this if not already there */
@@ -866,10 +869,11 @@
 
     function App() {
       const [isCardOpen, setIsCardOpen] = useState(false);
+      const [isDiscoverCardOpen, setIsDiscoverCardOpen] = useState(false);
 
       return (
         <>
-         <div className={`content-wrapper ${isCardOpen ? 'blur' : ''}`}>
+          <div className={`content-wrapper ${isCardOpen || isDiscoverCardOpen ? 'blur' : ''}`}>
 
             <div className="my-element"></div>
             <div className="text-1">THIS IS</div>
@@ -884,9 +888,16 @@
 
             <div className="Sol-pill-img"></div>
             <div className="nav-split-1"></div>
-            <div className="text-discover">Discover</div>
+           <a href="faq.html" target="_blank" rel="noopener noreferrer" className="text-discover">
+  FAQ
+</a>
+
+
             <div className="nav-split-2"></div>
-            <div className="text-students">Students</div>
+            <a href="contact.html" target="_blank" rel="noopener noreferrer">
+  <div className="text-students">Contact</div>
+</a>
+
             <div className="about-pic"></div>
             <div className="text-about-us">About Us</div>
             <div className="about-why-us"></div>
@@ -946,11 +957,18 @@
           </div>
 
           <>
-  {/* Blur overlay only shows when open */}
-  {isCardOpen && <div className="blur-overlay" onClick={() => setIsCardOpen(false)}></div>}
+            {(isCardOpen || isDiscoverCardOpen) && (
+              <div
+                className="blur-overlay"
+                onClick={() => {
+                  setIsCardOpen(false);
+                  setIsDiscoverCardOpen(false);
+                }}
+              ></div>
+            )}
 
-   {/* Always render the big-card */}
-<div className={`big-card ${isCardOpen ? 'open' : ''}`}>
+            <div className={`big-card ${isCardOpen ? 'open' : ''}`}>
+  {/* Existing content */}
   <div
     style={{
       position: 'absolute',
@@ -970,8 +988,8 @@
       position: 'absolute',
       width: '293px',
       height: '36px',
-      left: '749px',
-      top: '159px',
+      left: '669px',
+      top: '129px',
       fontFamily: 'Inter',
       fontStyle: 'italic',
       fontWeight: 200,
@@ -989,8 +1007,8 @@
       position: 'absolute',
       width: '722px',
       height: '1px',
-      left: '749px',
-      top: '206px',
+      left: '669px',
+      top: '176px',
       background: 'linear-gradient(90deg, #D9D9D9 0%, rgba(0, 0, 0, 0) 100%)',
     }}
   ></div>
@@ -1000,8 +1018,8 @@
       position: 'absolute',
       width: '662px',
       height: '96px',
-      left: '749px',
-      top: '219px',
+      left: '669px',
+      top: '189px',
       fontFamily: 'Inter',
       fontStyle: 'italic',
       fontWeight: 200,
@@ -1013,14 +1031,136 @@
   >
     At Solnetex, we’re all about creating the most beautiful websites, and in addition to that, we even offer a bundle that allows you to get up to 5 videos and 10 posters done for you, all at a low cost. With unlimited revisions.
   </div>
+
+  {/* ✅ NEW element added BELOW */}
+  <div
+    style={{
+      position: 'absolute',
+      width: '595px',
+      height: '323px',
+      left: '350px',
+      top: '425px',
+      background: 'url(partnerships.png)',
+      borderRadius: '79px',
+      backgroundSize: 'cover',
+      backgroundRepeat: 'no-repeat',
+    }}
+  ></div>
+   <div
+    style={{
+      position: 'absolute',
+      width: '214px',
+      height: '36px',
+      left: '1010px',
+      top: '465px',
+      fontFamily: 'Inter',
+      fontStyle: 'italic',
+      fontWeight: 200,
+      fontSize: '30px',
+      lineHeight: '36px',
+      letterSpacing: '0.12em',
+      color: '#FFFFFF',
+    }}
+  >
+    Partnerships
+  </div>
+   <div
+    style={{
+      position: 'absolute',
+      width: '622px',
+      height: '1px',
+      left: '1010px',
+      top: '512px',
+      background: 'linear-gradient(90deg, #D9D9D9 0%, rgba(0, 0, 0, 0) 100%)',
+    }}
+  ></div>
+  <div
+    style={{
+      position: 'absolute',
+      width: '524px',
+      height: '96px',
+      left: '1010px',
+      top: '525px',
+      fontFamily: 'Inter',
+      fontStyle: 'italic',
+      fontWeight: 200,
+      fontSize: '20px',
+      lineHeight: '24px',
+      letterSpacing: '0.12em',
+      color: '#FFFFFF',
+    }}
+  >
+    We will soon be introducing a new platform to allow designers, developers and clients to connect with each other much more easily than ever before.
+  </div>
 </div>
 
 
- 
+            <div className={`big-card ${isDiscoverCardOpen ? 'open' : ''}`}>
+              <div
+                style={{
+                  position: 'absolute',
+                  width: '476px',
+                  height: '287px',
+                  left: '128px',
+                  top: '109px',
+                  background: 'url(FrameDiscover.png)',
+                  borderRadius: '79px',
+                  backgroundSize: 'cover',
+                  backgroundRepeat: 'no-repeat',
+                }}
+              ></div>
 
+              <div
+                style={{
+                  position: 'absolute',
+                  width: '293px',
+                  height: '36px',
+                  left: '749px',
+                  top: '159px',
+                  fontFamily: 'Inter',
+                  fontStyle: 'italic',
+                  fontWeight: 200,
+                  fontSize: '30px',
+                  lineHeight: '36px',
+                  letterSpacing: '0.12em',
+                  color: '#FFFFFF',
+                }}
+              >
+                Discover Our Vision
+              </div>
 
-</>
+              <div
+                style={{
+                  position: 'absolute',
+                  width: '722px',
+                  height: '1px',
+                  left: '749px',
+                  top: '206px',
+                  background: 'linear-gradient(90deg, #D9D9D9 0%, rgba(0, 0, 0, 0) 100%)',
+                }}
+              ></div>
 
+              <div
+                style={{
+                  position: 'absolute',
+                  width: '662px',
+                  height: '96px',
+                  left: '749px',
+                  top: '219px',
+                  fontFamily: 'Inter',
+                  fontStyle: 'italic',
+                  fontWeight: 200,
+                  fontSize: '20px',
+                  lineHeight: '24px',
+                  letterSpacing: '0.12em',
+                  color: '#FFFFFF',
+                }}
+              >
+                Here at Solnetex, we help you discover endless opportunities for design, development,
+                and collaboration. Learn how you can join our mission.
+              </div>
+            </div>
+          </>
         </>
       );
     }
@@ -1029,6 +1169,7 @@
     root.render(<App />);
   </script>
 </body>
+
 
 
 </html>
