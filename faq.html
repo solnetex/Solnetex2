@@ -1,5 +1,6 @@
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FAQ - Solnetex</title>  <!-- Add this line -->
     <!-- Fonts & Font Awesome -->
     <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
@@ -95,7 +96,7 @@
     <!-- CSS -->
     <style>
         body {
-    height: 100vh; /* Use full viewport height */
+    min-height: 100vh; /* Use full viewport height */
     margin: 0;
     color: #fff;
     display: flex;
@@ -103,7 +104,8 @@
     align-items: center; /* Center vertically */
     background-color: hsl(0, 0%, 5%);
     font-family: 'Inter', sans-serif;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
 
         h2 {
@@ -111,10 +113,12 @@
             margin-bottom: 20px;
             margin-top: 50px;
             font-family: 'Quicksand';
+            font-size: clamp(22px, 4.8vw, 38px);
+            letter-spacing: .08em;
         }
 
         .faq-container {
-            max-width: 600px;
+            width: min(92vw, 600px);
             margin: 0 auto;
         }
 
@@ -130,8 +134,8 @@
         .faq-question {
             background: transparent;
             color: #fff;
-            font-size: 1rem;
-            padding: 4px 13px;
+            font-size: clamp(0.95rem, 2.4vw, 1rem);
+            padding: 8px 14px;
             font-family: 'Quicksand';
             width: 100%;
             text-align: left;
@@ -176,7 +180,7 @@
             padding-left: 8px;
             padding-right: 8px;
             transition: height 0.5s ease, opacity 0.3s ease, padding 0.3s ease;
-            box-sizing: border-box;/
+            box-sizing: border-box;
         }
 
         .faq-item.active .faq-answer {

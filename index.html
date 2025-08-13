@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Solnetex</title>
 
     <!-- Fonts & Font Awesome -->
@@ -18,9 +19,11 @@
     <style>
         html,
         body {
-            height: 3000px;
+            height: auto;
+            min-height: 100%;
             margin: 0;
-            overflow: auto;
+            overflow-x: hidden;
+            overflow-y: auto;
             background-color: hsl(0, 0%, 5%);
             font-family: 'Inter', sans-serif;
         }
@@ -40,6 +43,30 @@
         .content-wrapper.blur {
             filter: blur(8px);
             pointer-events: none;
+        }
+
+        :root {
+            --scale: 1;
+            --design-width: 1920;
+            --design-height: 3000;
+            --scaled-height: 3000px;
+            --card-scale: 1;
+        }
+
+        .scaled-outer {
+            position: relative;
+            width: 100%;
+            height: var(--scaled-height);
+        }
+
+        .scaled {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 1920px;
+            height: 3000px;
+            transform-origin: top left;
+            transform: scale(var(--scale));
         }
 
         .my-element {
@@ -804,19 +831,19 @@
     .big-card {
       box-sizing: border-box;
       position: fixed;
-      width: 1701px;
-      height: 804px;
+      width: min(90vw, 1701px);
+      height: min(90vh, 804px);
       left: 50%;
       top: 50%;
-      transform: translate(-50%, -50%) translateY(1500px) rotate(45deg);
+      transform: translate(-50%, -50%) translateY(1500px) rotate(45deg) scale(var(--card-scale));
       background: rgba(207, 207, 207, 0.14);
       border: 1px solid #5C5C5C;
-      border-radius: 134px;
+      border-radius: 34px;
       color: #fff;
-      padding: 50px;
+      padding: 24px;
       z-index: 1000;
       will-change: opacity, transform;
-
+      overflow: auto;
 
       opacity: 0;
       transition: opacity 0.8s ease, transform 0.8s ease;
@@ -824,7 +851,7 @@
 
     .big-card.open {
       opacity: 1;
-      transform: translate(-50%, -50%) translateY(0) rotate(0);
+      transform: translate(-50%, -50%) translateY(0) rotate(0) scale(var(--card-scale));
     }
 
     .big-card button {
@@ -838,6 +865,17 @@
     }
     a {
   text-decoration: none;
+}
+
+/* Responsive scaling: compute --scale and --card-scale from JS for small screens */
+@media (max-width: 1919px) {
+  :root { --scale: calc(100vw / 1920); }
+}
+@media (max-width: 900px) {
+  :root { --card-scale: 0.9; }
+}
+@media (max-width: 600px) {
+  :root { --card-scale: 0.8; }
 }
 
 
@@ -865,95 +903,115 @@
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <script type="text/babel">
-    const { useState } = React;
+    const { useState, useEffect } = React;
+
+    function useViewportScale() {
+      useEffect(() => {
+        function updateScale() {
+          const base = 1920;
+          const scale = Math.min(window.innerWidth / base, 1);
+          document.documentElement.style.setProperty('--scale', String(scale));
+          document.documentElement.style.setProperty('--scaled-height', `${3000 * scale}px`);
+          const cardScale = window.innerWidth < 600 ? 0.8 : window.innerWidth < 900 ? 0.9 : 1;
+          document.documentElement.style.setProperty('--card-scale', String(cardScale));
+        }
+        updateScale();
+        window.addEventListener('resize', updateScale);
+        return () => window.removeEventListener('resize', updateScale);
+      }, []);
+    }
 
     function App() {
+      useViewportScale();
       const [isCardOpen, setIsCardOpen] = useState(false);
       const [isDiscoverCardOpen, setIsDiscoverCardOpen] = useState(false);
 
       return (
         <>
-          <div className={`content-wrapper ${isCardOpen || isDiscoverCardOpen ? 'blur' : ''}`}>
+                    <div className={`content-wrapper ${isCardOpen || isDiscoverCardOpen ? 'blur' : ''}`}>
+            <div className="scaled-outer">
+              <div className="scaled">
+                <div className="my-element"></div>
+                <div className="text-1">THIS IS</div>
+                <div className="nav-box"></div>
+                <div className="text-our">OUR</div>
+                <div className="text-design">DESIGN</div>
+                <div className="sol-pill"></div>
 
-            <div className="my-element"></div>
-            <div className="text-1">THIS IS</div>
-            <div className="nav-box"></div>
-            <div className="text-our">OUR</div>
-            <div className="text-design">DESIGN</div>
-            <div className="sol-pill"></div>
+                <button className="text-home" onClick={() => setIsCardOpen(true)}>
+                  Services
+                </button>
 
-            <button className="text-home" onClick={() => setIsCardOpen(true)}>
-              Services
-            </button>
-
-            <div className="Sol-pill-img"></div>
-            <div className="nav-split-1"></div>
-           <a href="faq.html" target="_blank" rel="noopener noreferrer" className="text-discover">
-  FAQ
-</a>
+                <div className="Sol-pill-img"></div>
+                <div className="nav-split-1"></div>
+               <a href="faq.html" target="_blank" rel="noopener noreferrer" className="text-discover">
+      FAQ
+    </a>
 
 
-            <div className="nav-split-2"></div>
-            <a href="contact.html" target="_blank" rel="noopener noreferrer">
-  <div className="text-students">Contact</div>
-</a>
+                <div className="nav-split-2"></div>
+                <a href="contact.html" target="_blank" rel="noopener noreferrer">
+      <div className="text-students">Contact</div>
+    </a>
 
-            <div className="about-pic"></div>
-            <div className="text-about-us">About Us</div>
-            <div className="about-why-us"></div>
-            <div className="separator1"></div>
-            <div className="solnetex-description">
-              At Solnetex, we don’t just build stunning websites — we build opportunities. We connect talented designers and developers, giving them a platform to collaborate, create, and earn together. By combining high-quality design with seamless partnerships, we help businesses grow and empower creatives to thrive.
+                <div className="about-pic"></div>
+                <div className="text-about-us">About Us</div>
+                <div className="about-why-us"></div>
+                <div className="separator1"></div>
+                <div className="solnetex-description">
+                  At Solnetex, we don’t just build stunning websites — we build opportunities. We connect talented designers and developers, giving them a platform to collaborate, create, and earn together. By combining high-quality design with seamless partnerships, we help businesses grow and empower creatives to thrive.
+                </div>
+                <div className="text-why-us">Why Us?</div>
+                <div className="separator2"></div>
+                <div className="other-companies">
+                  <p>Other Companies</p>
+                  <p>✖ Slow communication</p>
+                  <p>✖ Hidden processes</p>
+                  <p>✖ Inconsistent results</p>
+                  <p>✖ Limited expertise</p>
+                  <p>✖ Outsourced talent</p>
+                </div>
+                <div className="solnetex-benefits">
+                  <p>Solnetex</p>
+                  <p>✔ Fast, proactive communication</p>
+                  <p>✔ Full transparency</p>
+                  <p>✔ Reliable, proven results</p>
+                  <p>✔ Expert-level strategies</p>
+                  <p>✔ Lots of experience</p>
+                </div>
+                <div className="quote-pic"></div>
+                <div className="quote-line1"></div>
+                <div className="text-88-percent">88%</div>
+                <div className="quote-mark">“</div>
+                <div className="my-friends-text">
+                  My own friends could not understand my web page.
+                </div>
+                <div className="quote-mark-close">”</div>
+                <div className="quote-line2"></div>
+                <div className="quote-until-solnetex">“Until Solnetex came in”</div>
+                <div className="percrect"></div>
+                <div className="less-likely-text">
+                  of online consumers are less likely to return to a site after a bad user experience.
+                </div>
+                <div className="retain-rect"></div>
+                <div className="text-clean">Clean</div>
+                <div className="text-retention">
+                  layouts can retain consumer retention more than you can imagine.
+                </div>
+                <a className="additional-blogs" href="blogs.html">Additional blogs</a>
+                <div className="footer-separation"></div>
+                <a className="tips-tricks" href="blog-ux-tips.html">Tips and Tricks to elevate UX</a>
+                <a className="ways-low-budgets" href="blog-low-budget.html">Ways to get around with low budgets</a>
+                <a className="top5-design-trends" href="blog-design-trends-2025.html">Top 5 design trends, 2025</a>
+                <div className="more-from-us">More from us</div>
+                <div className="footer-sepa-2"></div>
+                <a href="https://discord.gg/7E7g2Q9b5G" target="_blank" rel="noopener noreferrer" className="discord">Discord</a>
+                <a href="https://www.instagram.com/solnetex/" target="_blank" rel="noopener noreferrer" className="instagram">Instagram</a>
+                <a href="https://twitter.com/solnetex" target="_blank" rel="noopener noreferrer" className="x-twitter">X (Formerly Twitter)</a>
+
+                <div className="copyright-text">© 2025 Solnetex. All rights reserved.</div>
+              </div>
             </div>
-            <div className="text-why-us">Why Us?</div>
-            <div className="separator2"></div>
-            <div className="other-companies">
-              <p>Other Companies</p>
-              <p>✖ Slow communication</p>
-              <p>✖ Hidden processes</p>
-              <p>✖ Inconsistent results</p>
-              <p>✖ Limited expertise</p>
-              <p>✖ Outsourced talent</p>
-            </div>
-            <div className="solnetex-benefits">
-              <p>Solnetex</p>
-              <p>✔ Fast, proactive communication</p>
-              <p>✔ Full transparency</p>
-              <p>✔ Reliable, proven results</p>
-              <p>✔ Expert-level strategies</p>
-              <p>✔ Lots of experience</p>
-            </div>
-            <div className="quote-pic"></div>
-            <div className="quote-line1"></div>
-            <div className="text-88-percent">88%</div>
-            <div className="quote-mark">“</div>
-            <div className="my-friends-text">
-              My own friends could not understand my web page.
-            </div>
-            <div className="quote-mark-close">”</div>
-            <div className="quote-line2"></div>
-            <div className="quote-until-solnetex">“Until Solnetex came in”</div>
-            <div className="percrect"></div>
-            <div className="less-likely-text">
-              of online consumers are less likely to return to a site after a bad user experience.
-            </div>
-            <div className="retain-rect"></div>
-            <div className="text-clean">Clean</div>
-            <div className="text-retention">
-              layouts can retain consumer retention more than you can imagine.
-            </div>
-            <div className="additional-blogs">Additional blogs</div>
-            <div className="footer-separation"></div>
-            <div className="tips-tricks">Tips and Tricks to elevate UX</div>
-            <div className="ways-low-budgets">Ways to get around with low budgets</div>
-            <div className="top5-design-trends">Top 5 design trends, 2025</div>
-            <div className="more-from-us">More from us</div>
-            <div className="footer-sepa-2"></div>
-            <a href="https://discord.gg/7E7g2Q9b5G" target="_blank" rel="noopener noreferrer" className="discord">Discord</a>
-            <a href="https://www.instagram.com/solnetex/" target="_blank" rel="noopener noreferrer" className="instagram">Instagram</a>
-            <a href="https://twitter.com/solnetex" target="_blank" rel="noopener noreferrer" className="x-twitter">X (Formerly Twitter)</a>
-
-            <div className="copyright-text">© 2025 Solnetex. All rights reserved.</div>
           </div>
 
           <>
